@@ -16,7 +16,16 @@ mongoose.connect(MONGO_URI)
   .catch((err) => console.log("DB connection error:", err));
 
 // --- MIDDLEWARE ---
-app.use(cors());
+//app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://new-resolution-client.onrender.com"
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // --- TEST ROUTE ---
